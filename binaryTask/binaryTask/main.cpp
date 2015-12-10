@@ -1,23 +1,7 @@
 #include <iostream>
+#include "binaryNumbers.h"
 
 using namespace std;
-
-void printBinNum(int num)
-{
-	bool flag = false;
-	for (int i = sizeof(num) * 8; i > 0; i--)
-	{
-		if ((1 << (i - 1)) & num)
-		{
-			printf("1");
-			flag = true;
-		}
-		else if (flag)
-		{
-			printf("0");
-		}
-	}
-}
 
 void main()
 {
@@ -30,17 +14,24 @@ void main()
 	scanf("%i", &m);
 	printf("\nВ двоичной системе счисления: ");
 	printf("\nn = ");
-	printBinNum(n);
+	BinNumber* nBin = makeBinNumber(n);
+	printBinNum(nBin);
 	printf("\nm = ");
-	printBinNum(m);
+	BinNumber* mBin = makeBinNumber(m);
+	printBinNum(mBin);
+	BinNumber* sumBin = makeBinSum(nBin, mBin);
 	printf("\nn + m = ");
-	printBinNum(n + m);
-	printf("\nСумма n + m = %i", n + m);
+	printBinNum(sumBin);
+	int sum = makeDecNumber(sumBin);
+	printf("\nВ десятичной системе счисления: n + m = %i", sum);
+	deleteBinNumber(nBin);
+	deleteBinNumber(mBin);
+	deleteBinNumber(sumBin);
 	scanf("%*s");
 }
 /*
 Test 1:
 intput: n = 5, m = 5;
-output: ? ????????: n = 101, m = 101, n + m = 1010;
+output: n = 101, m = 101, n + m = 1010;
 n + m = 10
 */
