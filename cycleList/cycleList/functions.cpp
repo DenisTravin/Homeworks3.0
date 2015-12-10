@@ -41,16 +41,13 @@ ListHead* makeListHead(int num)
 {
 	ListHead* list = new ListHead;
 	ListElement *newElement = new ListElement;
-	ListElement *temp = newElement;
 	list->head = newElement;
 	newElement->next = nullptr;
 	newElement->number = 0;
+	ListElement *temp = newElement;
 	for (int i = 1; i < num; i++)
 	{
-		ListElement *newElement = new ListElement;
-		temp->next = newElement;
-		temp = newElement;
-		newElement->number = i;
+		temp = addElement(&temp, nullptr, i);
 	}
 	temp->next = list->head;
 	temp = list->head;
