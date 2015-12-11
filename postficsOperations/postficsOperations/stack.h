@@ -17,5 +17,3 @@ void stackDelete(Stack *stack);//delete all stack
 int stackHead(Stack *stack);//return stack head value
 
 bool stackEmpty(Stack *stack);//check is stack empty?
-
-void printAndDeleteStack(Stack* stack);//print and delete stack
