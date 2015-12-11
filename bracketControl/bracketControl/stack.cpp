@@ -50,6 +50,7 @@ void stackDelete(Stack *stack)
 		stack->head = stack->head->next;
 		delete temp;
 	}
+	delete stack;
 }
 
 int stackHead(Stack *stack)
