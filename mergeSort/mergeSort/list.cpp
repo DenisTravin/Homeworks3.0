@@ -1,8 +1,26 @@
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include "list.h"
 
 using namespace std;
+
+struct Person
+{
+	string name;
+	string number;
+};
+
+struct ListElement
+{
+	Person human;
+	ListElement *next;
+};
+
+struct ListHead
+{
+	ListElement *head;
+};
 
 int length(ListElement* head)
 {
@@ -31,7 +49,7 @@ void addElement(ListHead* list, string name, string number)
 	newElement->next = list->head;
 	list->head = newElement;
 }
-void splitList(ListElement *source, ListElement **front, ListElement **back)//split the list to two list's
+void splitList(ListElement *source, ListElement **front, ListElement **back)
 {
 	ListElement *current = source;
 	int len = length(source);
@@ -85,4 +103,64 @@ void saveListIntoFile(ListHead* list, int numOfElements)
 	delete list;
 	cout << "List was saved" << endl;
 	fout.close();
+}
+
+int stringComp(string a, string b)//string compare
+{
+	int minSize = min(a.size(), b.size());
+	for (int i = 0; i < minSize; i++)
+	{
+		if (a[i] != b[i])
+			return (int)(b[i] - a[i]);
+	}
+}
+
+ListElement* mergeFunc(ListElement *a, ListElement *b, int userChoise)
+{
+	ListElement *result = nullptr;
+	int cmpResult = 0;
+	if (a == nullptr)
+	{
+		return(b);
+	}
+	else if (b == nullptr)
+	{
+		return(a);
+	}
+	if (userChoise == 2)
+	{
+		cmpResult = stringComp(a->human.name, b->human.name);
+	}
+	else
+	{
+		cmpResult = stringComp(a->human.number, b->human.number);
+	}
+	if (cmpResult >= 0)
+	{
+		result = a;
+		result->next = mergeFunc(a->next, b, userChoise);
+	}
+	else
+	{
+		result = b;
+		result->next = mergeFunc(a, b->next, userChoise);
+	}
+	return result;
+}
+
+bool checkNull(ListElement* source)
+{
+	if (source == nullptr || source->next == nullptr)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+ListElement* returnListHead(ListHead* list)
+{
+	return list->head;
 }

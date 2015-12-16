@@ -8,55 +8,12 @@ using namespace std;
 
 int numOfElem = 0;
 
-int stringComp(string a, string b)//string compare
-{
-	int minSize = min(a.size(), b.size());
-	for (int i = 0; i < minSize; i++)
-	{
-		if (a[i] != b[i])
-			return (int)(b[i] - a[i]);
-	}
-}
-
-ListElement* mergeFunc(ListElement *a, ListElement *b, int userChoise)//return smallest element of part of the list, reccursion with next element
-{
-	ListElement *result = nullptr;
-	int cmpResult = 0;
-	if (a == nullptr)
-	{
-		return(b);
-	}
-	else if (b == nullptr)
-	{
-		return(a);
-	}
-	if (userChoise == 2)
-	{
-		cmpResult = stringComp(a->human.name, b->human.name);
-	}
-	else
-	{
-		cmpResult = stringComp(a->human.number, b->human.number);
-	}
-	if (cmpResult >= 0)
-	{
-		result = a;
-		result->next = mergeFunc(a->next, b, userChoise);
-	}
-	else
-	{
-		result = b;
-		result->next = mergeFunc(a, b->next, userChoise);
-	}
-	return result;
-}
-
 void mergeSort(ListElement **headSource, int userChoise)//split the list and sort both parts
 {
 	ListElement *head = *headSource;
 	ListElement *firstList;
 	ListElement *secondList;
-	if (head == nullptr || head->next == nullptr)
+	if (checkNull(head))
 	{
 		return;
 	}
@@ -111,13 +68,15 @@ void main()
 		}
 		case 2:
 		{
-			mergeSort(&list->head, userChoise);
+			ListElement* source = returnListHead(list);
+			mergeSort(&source, userChoise);
 			printList(list, numOfElem);
 			break;
 		}
 		case 3:
 		{
-			mergeSort(&list->head, userChoise);
+			ListElement* source = returnListHead(list);
+			mergeSort(&source, userChoise);
 			printList(list, numOfElem);
 			break;
 		}
