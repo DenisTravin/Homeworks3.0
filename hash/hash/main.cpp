@@ -6,12 +6,12 @@
 
 void main()
 {
-	HashTable *table = createTable();
+	HashTable *hashTable = createTable();
 	ifstream file("text.txt", ios::in);
 	if (!file.is_open())
 	{
 		cout << "File does not found" << endl;
-		deleteHashTable(table);
+		deleteHashTable(hashTable);
 	}
 	else
 	{
@@ -19,11 +19,11 @@ void main()
 		{
 			string newWord;
 			file >> newWord;
-			addTableElement(table, newWord);
+			addTableElement(hashTable, newWord);
 		}
-		printTable(table);
+		printTable(hashTable);
 	}
 	file.close();
-	deleteHashTable(table);
+	deleteHashTable(hashTable);
 	scanf("%*s");
 }

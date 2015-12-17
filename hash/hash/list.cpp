@@ -5,7 +5,7 @@
 struct ListElement
 {
 	ListElement *prev;
-	HashElement element;
+	HashElement *element;
 	ListElement *next;
 };
 
@@ -29,18 +29,23 @@ void deleteAllList(ListHead *list)
 	while (temp != nullptr && temp->next != nullptr)
 	{
 		temp = temp->next;
+		delete temp->prev->element;
 		delete temp->prev;
+	}
+	if (temp != nullptr)
+	{
+		delete temp->element;
 	}
 	delete temp;
 	delete list;
 }
 
-bool isELementInList(HashElement source, ListHead *list)
+bool isELementInList(HashElement* source, ListHead *list)
 {
 	ListElement *temp = list->head;
 	while (temp != nullptr)
 	{
-		if (temp->element.name == source.name)
+		if (returnHashWord(temp->element) == returnHashWord(source))
 		{
 			return true;
 		}
@@ -49,21 +54,21 @@ bool isELementInList(HashElement source, ListHead *list)
 	return false;
 }
 
-void findWord(HashElement source, ListHead *list)
+void findWord(HashElement* source, ListHead *list)
 {
 	ListElement *temp = list->head;
 	while (temp != nullptr)
 	{
-		if (temp->element.name == source.name)
+		if (returnHashWord(temp->element) == returnHashWord(source))
 		{
-			temp->element.number++;
+			addNumberToWord(temp->element);
 			return;
 		}
 		temp = temp->next;
 	}
 }
 
-void addElement(HashElement newElement, ListHead *list)
+void addElement(HashElement* newElement, ListHead *list)
 {
 	ListElement *temp = new ListElement;
 	temp->next = nullptr;
@@ -94,7 +99,7 @@ void printAllList(ListHead *list)
 	ListElement *temp = list->head;
 	while (temp != nullptr)
 	{
-		cout << "Word: '" << temp->element.name << "' uses " << temp->element.number << " times" << endl;
+		cout << "Word: '" << returnHashWord(temp->element) << "' uses " << returnHashNumber(temp->element) << " times" << endl;
 		temp = temp->next;
 	}
 }
