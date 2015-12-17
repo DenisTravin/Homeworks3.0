@@ -8,7 +8,7 @@ struct ListHead;
 
 ListHead* createList();//create new list
 
-void insert(HashElement &newElement, ListHead *list);//add element to list
+void addElement(HashElement newElement, ListHead *list);//add element to list
 
 void printAllList(ListHead *list);//output all list
 

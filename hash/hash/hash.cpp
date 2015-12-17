@@ -5,17 +5,17 @@
 
 using namespace std;
 
-int const amount = 100;
+int const arraySize = 100;
 
-struct Table
+struct HashTable
 {
-	ListHead *array[amount];
+	ListHead *array[arraySize];
 };
 
-Table *createTable()
+HashTable *createTable()
 {
-	Table *table = new Table;
-	for (int i = 0; i < amount; ++i)
+	HashTable *table = new HashTable;
+	for (int i = 0; i < arraySize; ++i)
 	{
 		table->array[i] = createList();
 	}
@@ -31,31 +31,31 @@ int hashFunction(string &name)
 		hash += (int)name[i] * multiplier;
 		multiplier *= 31;
 	}
-	return (hash % amount + amount) % amount;
+	return (hash % arraySize + arraySize) % arraySize;
 }
 
-void addTableElement(Table *table, string &word)
+void addTableElement(HashTable *hashTable, string &word)
 {
-	ListHead *list = table->array[hashFunction(word)];
+	ListHead *list = hashTable->array[hashFunction(word)];
 	HashElement newElement;
 	newElement.name = word;
 	newElement.number = 1;
-	insert(newElement, list);
+	addElement(newElement, list);
 }
 
-void printTable(Table *table)
+void printTable(HashTable *hashTable)
 {
-	for (int i = 0; i < amount; ++i)
+	for (int i = 0; i < arraySize; ++i)
 	{
-		printAllList(table->array[i]);
+		printAllList(hashTable->array[i]);
 	}
 }
 
-void deleteHashTable(Table *table)
+void deleteHashTable(HashTable *hashTable)
 {
-	for (int i = 0; i < amount; ++i)
+	for (int i = 0; i < arraySize; ++i)
 	{
-		deleteAllList(table->array[i]);
+		deleteAllList(hashTable->array[i]);
 	}
-	delete table;
+	delete hashTable;
 }

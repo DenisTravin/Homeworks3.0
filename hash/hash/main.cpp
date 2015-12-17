@@ -4,11 +4,9 @@
 #include "list.h"
 #include "hash.h"
 
-using namespace std;
-
 void main()
 {
-	Table *table = createTable();
+	HashTable *table = createTable();
 	ifstream file("text.txt", ios::in);
 	if (!file.is_open())
 	{

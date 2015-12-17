@@ -26,24 +26,21 @@ ListHead* createList()
 void deleteAllList(ListHead *list)
 {
 	ListElement *temp = list->head;
-	ListElement *secTemp = temp;
-	while (temp != nullptr)
+	while (temp != nullptr && temp->next != nullptr)
 	{
-		secTemp = temp->next;
-		delete temp;
-		temp = secTemp;
+		temp = temp->next;
+		delete temp->prev;
 	}
 	delete temp;
-	delete secTemp;
 	delete list;
 }
 
-bool existInList(HashElement &sample, ListHead *list)
+bool isELementInList(HashElement source, ListHead *list)
 {
 	ListElement *temp = list->head;
 	while (temp != nullptr)
 	{
-		if (temp->element.name == sample.name)
+		if (temp->element.name == source.name)
 		{
 			return true;
 		}
@@ -52,12 +49,12 @@ bool existInList(HashElement &sample, ListHead *list)
 	return false;
 }
 
-void IncNumber(HashElement &sample, ListHead *list)
+void findWord(HashElement source, ListHead *list)
 {
 	ListElement *temp = list->head;
 	while (temp != nullptr)
 	{
-		if (temp->element.name == sample.name)
+		if (temp->element.name == source.name)
 		{
 			temp->element.number++;
 			return;
@@ -66,7 +63,7 @@ void IncNumber(HashElement &sample, ListHead *list)
 	}
 }
 
-void insert(HashElement &newElement, ListHead *list)
+void addElement(HashElement newElement, ListHead *list)
 {
 	ListElement *temp = new ListElement;
 	temp->next = nullptr;
@@ -74,10 +71,10 @@ void insert(HashElement &newElement, ListHead *list)
 
 	if (list->head != nullptr)
 	{
-		if (existInList(newElement, list))
+		if (isELementInList(newElement, list))
 		{
 			delete temp;
-			IncNumber(newElement, list);
+			findWord(newElement, list);
 			return;
 		}
 		temp->prev = list->tail;
@@ -97,8 +94,7 @@ void printAllList(ListHead *list)
 	ListElement *temp = list->head;
 	while (temp != nullptr)
 	{
-		std::cout << "Word: " << temp->element.name << " uses " << temp->element.number << " times";
+		cout << "Word: '" << temp->element.name << "' uses " << temp->element.number << " times" << endl;
 		temp = temp->next;
-		std::cout << std::endl;
 	}
 }

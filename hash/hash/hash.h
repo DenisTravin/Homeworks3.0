@@ -2,7 +2,7 @@
 
 using namespace std;
 
-struct Table;
+struct HashTable;
 
 struct HashElement
 {
@@ -10,8 +10,13 @@ struct HashElement
 	int number;
 };
 
-Table *createTable();
+HashTable *createTable();
+
 int hashFunction(string &name);
-void addTableElement(Table *table, string &word);
-void printTable(Table *table);
-void deleteHashTable(Table *table);
+
+void addTableElement(HashTable *table, string &word);
+
+void printTable(HashTable *table);
+
+void deleteHashTable(HashTable *table);
+
