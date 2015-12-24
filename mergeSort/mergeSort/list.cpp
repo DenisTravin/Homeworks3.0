@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <algorithm>
 #include "list.h"
 
@@ -22,6 +23,7 @@ struct ListHead
 	ListElement *head;
 };
 
+// return lenght of list
 int length(ListElement* head)
 {
 	int count = 0;
@@ -41,7 +43,12 @@ ListHead* makeList()
 	return list;
 }
 
-void addElement(ListHead* list, string name, string number)
+void changeListHead(ListHead* list, ListElement* source)
+{
+	list->head = source;
+}
+
+void addElement(ListHead* list, const string &name, const string &number)
 {
 	ListElement* newElement = new ListElement;
 	newElement->human.name = name;
@@ -49,6 +56,8 @@ void addElement(ListHead* list, string name, string number)
 	newElement->next = list->head;
 	list->head = newElement;
 }
+
+// split the list to two list's
 void splitList(ListElement *source, ListElement **front, ListElement **back)
 {
 	ListElement *current = source;
@@ -105,7 +114,8 @@ void saveListIntoFile(ListHead* list, int numOfElements)
 	fout.close();
 }
 
-int stringComp(string a, string b)//string compare
+// string compare
+int stringComp(const string &a, const string &b)
 {
 	int minSize = min(a.size(), b.size());
 	for (int i = 0; i < minSize; i++)
@@ -115,17 +125,18 @@ int stringComp(string a, string b)//string compare
 	}
 }
 
+//return smallest element of part of the list, reccursion with next element
 ListElement* mergeFunc(ListElement *a, ListElement *b, int userChoise)
 {
 	ListElement *result = nullptr;
 	int cmpResult = 0;
 	if (a == nullptr)
 	{
-		return(b);
+		return b;
 	}
 	else if (b == nullptr)
 	{
-		return(a);
+		return a;
 	}
 	if (userChoise == 2)
 	{
@@ -148,19 +159,28 @@ ListElement* mergeFunc(ListElement *a, ListElement *b, int userChoise)
 	return result;
 }
 
+//check is source or source->next == nullptr
 bool checkNull(ListElement* source)
 {
-	if (source == nullptr || source->next == nullptr)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return source == nullptr || source->next == nullptr;
 }
 
 ListElement* returnListHead(ListHead* list)
 {
 	return list->head;
+}
+
+void mergeSort(ListElement **headSource, int userChoise)
+{
+	ListElement *head = *headSource;
+	ListElement *firstList = nullptr;
+	ListElement *secondList = nullptr;
+	if (checkNull(head))
+	{
+		return;
+	}
+	splitList(head, &firstList, &secondList);
+	mergeSort(&firstList, userChoise);
+	mergeSort(&secondList, userChoise);
+	*headSource = mergeFunc(firstList, secondList, userChoise);
 }

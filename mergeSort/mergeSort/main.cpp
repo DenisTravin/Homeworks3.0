@@ -8,21 +8,6 @@ using namespace std;
 
 int numOfElem = 0;
 
-void mergeSort(ListElement **headSource, int userChoise)//split the list and sort both parts
-{
-	ListElement *head = *headSource;
-	ListElement *firstList = nullptr;
-	ListElement *secondList = nullptr;
-	if (checkNull(head))
-	{
-		return;
-	}
-	splitList(head, &firstList, &secondList);
-	mergeSort(&firstList, userChoise);
-	mergeSort(&secondList, userChoise);
-	*headSource = mergeFunc(firstList, secondList, userChoise);
-}
-
 void main()
 {
 	ListHead* list = makeList();
@@ -70,6 +55,7 @@ void main()
 		{
 			ListElement* source = returnListHead(list);
 			mergeSort(&source, userChoise);
+			changeListHead(list, source);
 			printList(list, numOfElem);
 			break;
 		}
@@ -77,6 +63,7 @@ void main()
 		{
 			ListElement* source = returnListHead(list);
 			mergeSort(&source, userChoise);
+			changeListHead(list, source);
 			printList(list, numOfElem);
 			break;
 		}
