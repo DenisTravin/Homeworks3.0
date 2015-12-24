@@ -4,6 +4,8 @@
 #include "list.h"
 #include "hash.h"
 
+using namespace std;
+
 void main()
 {
 	HashTable *hashTable = createTable();
@@ -11,7 +13,6 @@ void main()
 	if (!file.is_open())
 	{
 		cout << "File does not found" << endl;
-		deleteHashTable(hashTable);
 	}
 	else
 	{

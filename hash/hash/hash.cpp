@@ -28,19 +28,19 @@ HashTable *createTable()
 	return table;
 }
 
-int hashFunction(string name)
+int hashFunction(const string &name)
 {
 	int hash = 0;
 	int mult = 1;
 	for (int i = 0; i < name.length(); ++i)
 	{
-		hash += (int)name[i] * mult;
+		hash += static_cast<int>(name[i]) * mult;
 		mult *= 29;
 	}
 	return (hash % arraySize + arraySize) % arraySize;
 }
 
-void addTableElement(HashTable *hashTable, string word)
+void addTableElement(HashTable *hashTable, const string &word)
 {
 	ListHead *list = hashTable->array[hashFunction(word)];
 	HashElement* newElement = new HashElement;

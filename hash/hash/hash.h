@@ -1,25 +1,30 @@
 #pragma once
 
-using namespace std;
-
 struct HashTable;
 
 struct HashElement;
 
 HashTable *createTable();
 
-int hashFunction(string name);//hash function
+// hash function
+int hashFunction(const std::string &name);
 
-void addTableElement(HashTable *table, string word);//add element to table
+// add element to table
+void addTableElement(HashTable *table, const std::string &word);
 
-void printTable(HashTable *table);//output all table
+// output all table
+void printTable(HashTable *table);
 
-void deleteHashTable(HashTable *table);//delete all table
+// delete all table
+void deleteHashTable(HashTable *table);
 
-string returnHashWord(HashElement* source);//return element word
+// return element word
+std::string returnHashWord(HashElement* source);
 
-int returnHashNumber(HashElement* source);//return element number's of word
+// return element number's of word
+int returnHashNumber(HashElement* source);
 
-void addNumberToWord(HashElement* source);//+1 to element->number
+// +1 to element->number
+void addNumberToWord(HashElement* source);
 
 

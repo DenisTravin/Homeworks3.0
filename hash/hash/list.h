@@ -6,10 +6,14 @@ struct ListElement;
 
 struct ListHead;
 
-ListHead* createList();//create new list
+// create new list
+ListHead* createList();
 
-void addElement(HashElement* newElement, ListHead *list);//add element to list
+// add element to list
+void addElement(HashElement* newElement, ListHead *list);
 
-void printAllList(ListHead *list);//output all list
+// output all list
+void printAllList(ListHead *list);
 
-void deleteAllList(ListHead *list);//delele all list
+// delele all list
+void deleteAllList(ListHead *list);

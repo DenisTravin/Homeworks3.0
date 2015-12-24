@@ -2,6 +2,8 @@
 #include <string>
 #include "list.h"
 
+using namespace std;
+
 struct ListElement
 {
 	ListElement *prev;
