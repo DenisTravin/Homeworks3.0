@@ -9,7 +9,7 @@ struct ListElement;
 
 struct ListHead;
 
-ListHead* makeList();//make new list
+ListHead* makeList();
 
 void addElement(ListHead* list, string name, string number);//add element to list
 

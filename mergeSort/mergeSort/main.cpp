@@ -11,8 +11,8 @@ int numOfElem = 0;
 void mergeSort(ListElement **headSource, int userChoise)//split the list and sort both parts
 {
 	ListElement *head = *headSource;
-	ListElement *firstList;
-	ListElement *secondList;
+	ListElement *firstList = nullptr;
+	ListElement *secondList = nullptr;
 	if (checkNull(head))
 	{
 		return;
