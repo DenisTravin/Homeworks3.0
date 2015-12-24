@@ -3,15 +3,15 @@
 struct ListElement;
 
 struct ListHead;
-
-ListHead* makeListHead();//make list head
-
-void delElement(ListElement *element);//delete element
-
-void addNewElement(ListHead *list, int elementNum);//add new element in list
-
-void printList(ListHead *list);//print out all list
-
-void delElementByNumber(ListHead *list, int elementNum);//delete elements from list with value = elementNum
-
-void removeAllList(ListHead *element);//delete all list
+// make list head
+ListHead* makeListHead();
+// delete next element
+void delNextElement(ListElement *element);
+// add new element in list
+void addNewElement(ListHead *list, int elementNum);
+// print out all list
+void printList(ListHead *list);
+// delete elements from list with value = elementNum
+void delElementByNumber(ListHead *list, int elementNum);
+// delete all list
+void removeAllList(ListHead *element);

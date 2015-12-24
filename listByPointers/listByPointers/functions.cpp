@@ -58,7 +58,6 @@ void addNewElement(ListHead *list, int elementNum)
 		}
 	}
 	newElement->value = elementNum;
-	return;
 }
 
 void printList(ListHead *list)
@@ -77,43 +76,41 @@ void printList(ListHead *list)
 	cout << temp->value << " " << endl;
 }
 
-void delElement(ListElement *element)
+void delNextElement(ListElement *element)
 {
-	ListHead keapNextElement;
-	keapNextElement.head = element->next->next;
+	ListElement* keepNextElement = element->next->next;
 	delete element->next;
-	element->next = keapNextElement.head;
+	element->next = keepNextElement;
 }
 
 void delElementByNumber(ListHead *list, int elementNum)
 {
-	ListHead keapNextElement;
 	while (list->head != nullptr && list->head->value == elementNum)
 	{
-		keapNextElement.head = list->head->next;
+		ListElement* keepNextElelement = list->head->next;
 		delete list->head;
-		list->head = keapNextElement.head;
+		list->head = keepNextElelement;
 	}
 	if (list->head == nullptr)
 	{
 		return;
 	}
 	ListElement *tmp = list->head;
-	while (tmp->next != nullptr)
+	while (tmp != nullptr && tmp->next != nullptr)
 	{
 		if (tmp->next->value == elementNum)
 		{
-			delElement(tmp);
+			delNextElement(tmp);
 		}
 		tmp = tmp->next;
 	}
-	return;
 }
 
 void removeAllList(ListHead *list)
 {
 	if (list->head == nullptr)
 	{
+		delete list;
 		return;
 	}
 	ListElement *tmp = list->head;
@@ -126,5 +123,4 @@ void removeAllList(ListHead *list)
 	}
 	delete tmp;
 	delete list;
-	return;
 }
