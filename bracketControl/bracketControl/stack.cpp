@@ -29,17 +29,20 @@ void stackPush(Stack *stack, int number)
 	stack->head = newElement;
 }
 
-void stackPop(Stack *stack)//int stackPop(Stack *stack) // if you need to have pop element - uncomment
+// int stackPop(Stack *stack) // if you need to have pop element - uncomment
+void stackPop(Stack *stack)
 {
 	if (stack->head == nullptr)
 	{
-		return;//return - 1 // if you need to have pop element - uncomment
+		// return - 1 // if you need to have pop element - uncomment
+		return;
 	}
 	//int value = stack->head->value; // if you need to have pop element - uncomment
 	StackElement *temp = stack->head->next;
 	delete stack->head;
 	stack->head = temp;
-	return; // return value; // if you need to have pop element - uncomment
+	// return value; // if you need to have pop element - uncomment
+	return;
 }
 
 void stackDelete(Stack *stack)

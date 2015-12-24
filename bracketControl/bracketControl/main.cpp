@@ -4,11 +4,9 @@
 
 using namespace std;
 
-bool isGood = true;
-
-void bracketControl(int inputChar, Stack *stack)
+bool bracketControl(int inputChar, Stack *stack)
 {
-	int outChar = NULL;
+	int outChar = 0;
 	switch (inputChar)
 	{
 	case ')':
@@ -29,18 +27,17 @@ void bracketControl(int inputChar, Stack *stack)
 	}
 	if (stackEmpty(stack) || stackHead(stack) != outChar)
 	{
-		isGood = false;
-		return;
+		return false;
 	}
 	stackPop(stack);
-	return;
+	return true;
 }
 
 void main()
 {
 	string str = "[({()})]";
 	Stack* stack = makeStack();
-
+	bool isGood = true;
 	for (int i = 0; i < str.size(); i++)
 	{
 		if (str[i] == '(' || str[i] == '{' || str[i] == '[')
@@ -48,11 +45,15 @@ void main()
 			stackPush(stack, str[i]);
 			continue;
 		}
-		bracketControl(str[i], stack);
-		if (!isGood)
+		if (!(bracketControl(str[i], stack)))
 		{
+			isGood = false;
 			break;
 		}
+	}
+	if (!stackEmpty(stack))
+	{
+		isGood = false;
 	}
 	if (isGood)
 	{
@@ -72,4 +73,7 @@ Output:Balance is bad
 Test 2:
 Input: [({()})]
 Output:Balance is nice
+Test 3:
+Input: (
+Output:Balance is bad
 */
