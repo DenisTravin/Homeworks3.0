@@ -42,6 +42,7 @@ void main()
 		}
 	}
 	printf("%i", stackHead(stack));
+	stackDelete(stack);
 	scanf("%*s");
 }
 /*
