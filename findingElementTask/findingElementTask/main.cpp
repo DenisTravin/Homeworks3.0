@@ -40,10 +40,10 @@ void main()
 	{
 		fscanf(input, "%i", &array[i]);
 	}
+	fclose(input);
 	quickSort(array, 0, arrayNumber - 1, arrayNumber);
 	printf("%i", findMostPopularNum(array, arrayNumber));
 	scanf("%*s");
-	fclose(input);
 }
 
 /*
