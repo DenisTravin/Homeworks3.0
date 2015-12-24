@@ -1,6 +1,6 @@
 #pragma once
 
-const int maxNum = 8;//max pow of 2 number
+const int maxNum = 32;//max pow of 2 number
 
 struct BinNumber;
 
