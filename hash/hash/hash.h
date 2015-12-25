@@ -6,9 +6,6 @@ struct HashElement;
 
 HashTable *createTable();
 
-// hash function
-int hashFunction(const std::string &name);
-
 // add element to table
 void addTableElement(HashTable *table, const std::string &word);
 
