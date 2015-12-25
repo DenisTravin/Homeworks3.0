@@ -17,11 +17,10 @@ int min(int a, int b)//return minimum between 2 int numbers
 
 void main(void)
 {
-	FILE *in;
 	int matrixGraph[maxCity][maxCity] = {};
 	int m = 0;
 	int n = 0;
-	in = fopen("in.txt", "r");
+	FILE *in = fopen("in.txt", "r");
 	fscanf(in, "%i %i", &n, &m);
 	//fill graph matrix by max numbers
 	for (int i = 0; i < n; i++)
@@ -37,7 +36,9 @@ void main(void)
 	//add edges to graph matrix
 	for (int i = 0; i < m; i++)
 	{
-		int a, b, len;
+		int a = 0;
+		int b = 0;
+		int len = 0;
 		fscanf(in, "%i %i %i", &a, &b, &len);
 		matrixGraph[a - 1][b - 1] = len;
 		matrixGraph[b - 1][a - 1] = len;
