@@ -4,8 +4,8 @@
 
 using namespace std;
                            // 0  1  2  3
-const int states[3][4] = {  { 1, 0, 2, 0 },  // /
-							{ 0, 2, 3, 2 },  // *
+const int states[3][4] = {  { 1, 1, 2, 0 },  // /
+							{ 0, 2, 3, 3 },  // *
 							{ 0, 0, 2, 2 }}; // any
 
 const bool isOutput[3][4] = { { false, false, true, true },
@@ -19,13 +19,10 @@ int giveIndex(char symbol)
 	{
 		case '/':
 			return 0;
-			break;
 		case '*':
 			return 1;
-			break;
 		default:
 			return 2;
-			break;
 	}
 }
 
@@ -58,7 +55,7 @@ void main()
 	int state = 0;
 	while (!feof(file))
 	{
-		char symbol;
+		char symbol = '\0';
 		fscanf(file, "%c", &symbol);
 		if (isComment(list, state, symbol))
 		{
