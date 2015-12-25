@@ -82,7 +82,6 @@ void main()
 	}
 	delete []matrix;
 	scanf("%*s");
-	return;
 }
 
 /*

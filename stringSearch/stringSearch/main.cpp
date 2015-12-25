@@ -16,7 +16,7 @@ long long powNum(int number, int pow)
 	return result;
 }
 
-long long hashFunc(string source, int first, int last)
+long long hashFunc(const string &source, int first, int last)
 {
 	long long result = 0;
 	for (int i = first; i < last; i++)
