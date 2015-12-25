@@ -184,3 +184,22 @@ void mergeSort(ListElement **headSource, int userChoise)
 	mergeSort(&secondList, userChoise);
 	*headSource = mergeFunc(firstList, secondList, userChoise);
 }
+
+void removeAllList(ListHead *list)
+{
+	if (list->head == nullptr)
+	{
+		delete list;
+		return;
+	}
+	ListElement *tmp = list->head;
+	ListElement *nextTmp = tmp->next;
+	while (tmp->next != nullptr)
+	{
+		nextTmp = tmp->next;
+		delete tmp;
+		tmp = nextTmp;
+	}
+	delete tmp;
+	delete list;
+}

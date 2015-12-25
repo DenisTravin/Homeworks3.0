@@ -6,7 +6,7 @@ using namespace std;
 
 void main()
 {
-	string str = "2 * 3 + 4";
+	string str = "2 + 3 * 4";
 	Stack* stack = makeStack();
 
 	for (int i = 0; i < str.size(); i++)

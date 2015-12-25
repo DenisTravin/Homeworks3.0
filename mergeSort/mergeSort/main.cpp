@@ -76,4 +76,5 @@ void main()
 		}
 		}
 	}
+	removeAllList(list);
 }
