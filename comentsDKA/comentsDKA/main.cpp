@@ -3,10 +3,10 @@
 #include "list.h"
 
 using namespace std;
-
-const int states[3][4] = {  { 1, 0, 2, 0 },
-							{ 0, 2, 3, 2 },
-							{ 0, 0, 2, 2 }};
+                           // 0  1  2  3
+const int states[3][4] = {  { 1, 0, 2, 0 },  // /
+							{ 0, 2, 3, 2 },  // *
+							{ 0, 0, 2, 2 }}; // any
 
 const bool isOutput[3][4] = { { false, false, true, true },
 							  { false, true, true, true },

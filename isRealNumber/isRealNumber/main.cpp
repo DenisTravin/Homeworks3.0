@@ -3,74 +3,85 @@
 
 using namespace std;
 
+enum class State
+{
+	start,
+	firstDigit,
+	point,
+	secondDigit, 
+	exp,
+	plusOrMinus,
+	lastDigit
+};
+
 //check does char is digit
 bool isDigit(char number)
 {
-	if (number >= '0' && number <= '9')
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return number >= '0' && number <= '9';
 }
 
 //check does number is real
 bool isNumberReal(const string &number)
 {
-	int state = 0;
+	State state = State::start;
 	for (int i = 0; i < number.length(); i++)
 	{
 		switch (state)
 		{
-			case 0:
+		case State::start:
 				if (isDigit(number[i]))
 				{
-					state = 1;
+					state = State::firstDigit;
 				}
 				else
 				{
 					return false;
 				}
 				break;
-			case 1:
+			case State::firstDigit:
 				if (isDigit(number[i]))
 				{
-					state = 1;
+					state = State::firstDigit;
 				}
 				else
 				{
 					if (number[i] == '.')
 					{
-						state = 2;
+						state = State::point;
 					}
 					else
 					{
-						return false;
+						if (number[i] == 'E')
+						{
+							state = State::exp;
+						}
+						else
+						{
+							return false;
+						}
 					}
 				}
 				break;
-			case 2:
+			case State::point:
 				if (isDigit(number[i]))
 				{
-					state = 3;
+					state = State::secondDigit;
 				}
 				else
 				{
 					return false;
 				}
 				break;
-			case 3:
+			case State::secondDigit:
 				if (isDigit(number[i]))
 				{
-					state = 3;
+					state = State::secondDigit;
 				}
 				else
 				{
 					if (number[i] == 'E')
 					{
-						state = 4;
+						state = State::exp;
 					}
 					else
 					{
@@ -78,16 +89,16 @@ bool isNumberReal(const string &number)
 					}
 				}
 				break;
-			case 4:
+			case State::exp:
 				if (number[i] == '+' || number[i] == '-')
 				{
-					state = 5;
+					state = State::plusOrMinus;
 				}
 				else
 				{
 					if (isDigit(number[i]))
 					{
-						state = 6;
+						state = State::lastDigit;
 					}
 					else
 					{
@@ -95,20 +106,20 @@ bool isNumberReal(const string &number)
 					}
 				}
 				break;
-			case 5:
+			case State::plusOrMinus:
 				if (isDigit(number[i]))
 				{
-					state = 6;
+					state = State::lastDigit;
 				}
 				else
 				{
 					return false;
 				}
 				break;
-			case 6:
+			case State::lastDigit:
 				if (isDigit(number[i]))
 				{
-					state = 6;
+					state = State::lastDigit;
 				}
 				else
 				{
@@ -116,12 +127,12 @@ bool isNumberReal(const string &number)
 				}
 		}
 	}
-	return (state == 6 || state == 3 || state == 1);
+	return (state == State::lastDigit || state == State::secondDigit || state == State::firstDigit);
 }
 
 void main()
 {
-	string number = "1.2E4";
+	string number = "1.E4";
 	if (isNumberReal(number))
 	{
 		cout << number << " is real" << endl;
