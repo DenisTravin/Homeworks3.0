@@ -5,6 +5,19 @@ using namespace std;
 
 const int maxNumber = 100;
 
+void print(int* matrix[], int vertex)
+{
+	for (int i = 0; i < vertex; i++)
+	{
+		for (int j = 0; j < vertex; j++)
+		{
+			cout << matrix[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl << endl;
+}
+
 int** setMatrix(int vertex)
 {
 	int **matrix = new int*[vertex];
@@ -31,7 +44,7 @@ void deleteMatrix(int* matrix[], int vertex)
 	delete[]matrix;
 }
 
-int getNearVertex(int* matrix[], int vertex, bool used[], int start, int &minLength)
+int getNearVertex(int* matrix[], int vertex, bool used[], int start, int minLength)
 {
 	int vertexTemp = -1;
 	for (int i = 0; i < vertex; i++)
@@ -49,7 +62,7 @@ int getNearVertex(int* matrix[], int vertex, bool used[], int start, int &minLen
 			}
 			else
 			{
-				if (matrix[i][i] == -1)
+				if (matrix[i][i] == 0)
 				{
 					int newLength = matrix[start][i];
 					if (newLength < minLength)
@@ -61,15 +74,15 @@ int getNearVertex(int* matrix[], int vertex, bool used[], int start, int &minLen
 			}
 		}
 	}
-	return vertex;
+	return vertexTemp;
 }
 
-int getNearCity(int* matrix[], int vertex, int currCountry)
+int getNearCityForCountry(int* matrix[], int vertex, int currentCountry)
 {
 	bool used[maxNumber] = {};
 	for (int i = 0; i < vertex; i++)
 	{
-		if (matrix[i][i] == currCountry)
+		if (matrix[i][i] - 1 == currentCountry)
 		{
 			used[i] = true;
 			int minLength = INT_MAX;
@@ -80,21 +93,22 @@ int getNearCity(int* matrix[], int vertex, int currCountry)
 
 void setCities(int* matrix[], int vertex, int k)
 {
-	int currCountry = 0;
+	int currentCountry = 0;
 	int count = 0;
 	while (count < vertex - k)
 	{
-		int newCity = getNearCity(matrix, vertex, currCountry);
+		int newCity = getNearCityForCountry(matrix, vertex, currentCountry);
 		if (newCity == -1)
 		{
-			currCountry++;
-			currCountry = currCountry % k;
+			currentCountry++;
+			currentCountry = currentCountry % k;
 			continue;
 		}
 		count++;
-		matrix[newCity - 1][newCity - 1] = currCountry + 1;
-		currCountry++;
-		currCountry = currCountry % k;
+		matrix[newCity][newCity] = currentCountry + 1;
+		currentCountry++;
+		currentCountry = currentCountry % k;
+		print(matrix, vertex);
 	}
 }
 
@@ -103,7 +117,7 @@ void printCountry(int* matrix[], int vertex, int currCountry)
 	bool used[maxNumber] = {};
 	for (int i = 0; i < vertex; i++)
 	{
-		if (!used[i] && matrix[i][i] == currCountry)
+		if (!used[i] && matrix[i][i] - 1 == currCountry)
 		{
 			used[i] = true;
 			cout << i + 1 << ' ';
@@ -122,7 +136,8 @@ void main()
 		scanf("%*s");
 		return;
 	}
-	file >> n >> m;
+	file >> n;
+	file >> m;
 	int** matrix = setMatrix(n);
 	for (int k = 0; k < m; k++)
 	{
@@ -144,6 +159,7 @@ void main()
 		matrix[vertex - 1][vertex - 1] = i + 1;
 	}
 	file.close();
+	print(matrix, n);
 	setCities(matrix, n, k);
 	for (int i = 0; i < k; i++)
 	{
