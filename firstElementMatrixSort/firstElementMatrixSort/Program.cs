@@ -2,71 +2,60 @@
 
 namespace SortArrayProgram
 {
-    // class for sort array
+    // class for sort matrix by first elements
     class Program
     {
         // main function
         static void Main(string[] args)
         {
-            const int arrayNumber = 5;
-            int[,] array = new int[arrayNumber, arrayNumber] { { 1, 2, 3, 4, 5 }, { 6, 7, 8, 9, 8 }, { 1, 2, 3, 4, 5 }, { 9, 8, 7, 6, 5 }, { 5, 4, 3, 2, 1 } };
+            const int arrayNumberLine = 4;
+            const int arrayNumberColumn = 5;
+            int[,] array = new int[arrayNumberLine, arrayNumberColumn] { { 1, 5, 4, 2, 3 }, { 6, 7, 8, 9, 8 }, { 1, 2, 3, 4, 5 }, { 9, 8, 7, 6, 5 }};
             Console.Write("Input array: ");
-            ArrayOutput(array, arrayNumber);
-            Console.Write("\nOutput spiral element: ");
-            ArraySpiralOutput(array, arrayNumber);
+            ArrayOutput(array);
+            ArraySort(array);
+            Console.Write("\nSorted array: ");
+            ArrayOutput(array);
             Console.ReadLine();
         }
 
         // array output function
-        private static void ArrayOutput(int[,] array, int arrayNumber)
+        private static void ArrayOutput(int[,] array)
         {
-            for (var i = 0; i < arrayNumber; i++)
+            for (var i = 0; i < array.GetLength(0); i++)
             {
                 Console.Write("\n");
-                for (var j = 0; j < arrayNumber; j++)
+                for (var j = 0; j < array.GetLength(1); j++)
                 {
                     Console.Write("{0} ", array[i, j]);
                 }
             }
         }
 
-        // array spiral output function
-        private static void ArraySpiralOutput(int[,] array, int arrayNumber)
+        // array sort function
+        private static void ArraySort(int[,] array)
         {
-            int iCurrentElement = arrayNumber / 2;
-            int jCurrentElement = arrayNumber / 2;
-            int step = 0;
-            Console.Write("{0} ", array[iCurrentElement, jCurrentElement]);
-            for (var k = 0; k < arrayNumber / 2; k++)
+            for (int i = 0; i < array.GetLength(1); i++)
             {
-                step++;
-                for (var i = 0; i < step; i++)
+                for (int j = array.GetLength(1) - 1; j > i; j++)
                 {
-                    iCurrentElement--;
-                    Console.Write("{0} ", array[iCurrentElement, jCurrentElement]);
-                }
-                for (var j = 0; j < step; j++)
-                {
-                    jCurrentElement++;
-                    Console.Write("{0} ", array[iCurrentElement, jCurrentElement]);
-                }
-                step++;
-                for (var i = 0; i < step; i++)
-                {
-                    iCurrentElement++;
-                    Console.Write("{0} ", array[iCurrentElement, jCurrentElement]);
-                }
-                for (var j = 0; j < step; j++)
-                {
-                    jCurrentElement--;
-                    Console.Write("{0} ", array[iCurrentElement, jCurrentElement]);
+                    if (array[0, i] > array[0, j])
+                    {
+                        for (int k = 0; k < array.GetLength(0); ++k)
+                        {
+                            Swap(ref array[k, i], ref array[k, j]);
+                        }
+                    }
                 }
             }
-            for (var i = 0; i < step; i++)
-            {
-                iCurrentElement--;
-                Console.Write("{0} ", array[iCurrentElement, jCurrentElement]);
-            }
+        }
+
+        // swap function
+        public static void Swap(ref int firstElement, ref int secondElement)
+        {
+            int temp = firstElement;
+            firstElement = secondElement;
+            secondElement = temp;
         }
     }
 }

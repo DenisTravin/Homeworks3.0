@@ -13,7 +13,7 @@ namespace SortArrayProgram
             Console.Write("Input array: ");
             ArrayOutput(array);
             Console.Write("\nOutput spiral element: ");
-            ArraySpiralOutput(array, arrayNumber);
+            ArraySpiralOutput(array);
             Console.ReadLine();
         }
 
@@ -31,13 +31,13 @@ namespace SortArrayProgram
         }
 
         // array spiral output function
-        private static void ArraySpiralOutput(int[,] array, int arrayNumber)
+        private static void ArraySpiralOutput(int[,] array)
         {
-            int iCurrentElement = arrayNumber / 2;
-            int jCurrentElement = arrayNumber / 2;
+            int iCurrentElement = array.GetLength(0) / 2;
+            int jCurrentElement = array.GetLength(1) / 2;
             int step = 0;
             Console.Write("{0} ", array[iCurrentElement, jCurrentElement]);
-            for (var k = 0; k < arrayNumber / 2; k++)
+            for (var k = 0; k < array.GetLength(0) / 2; k++)
             {
                 step++;
                 for (var i = 0; i < step; i++)
