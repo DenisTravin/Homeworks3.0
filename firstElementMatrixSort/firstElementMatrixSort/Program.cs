@@ -35,13 +35,13 @@ namespace SortArrayProgram
         // array sort function
         private static void ArraySort(int[,] array)
         {
-            for (int i = 0; i < array.GetLength(1); i++)
+            for (var i = 0; i < array.GetLength(1); i++)
             {
-                for (int j = array.GetLength(1) - 1; j > i; j++)
+                for (var j = array.GetLength(1) - 1; j > i; j--)
                 {
                     if (array[0, i] > array[0, j])
                     {
-                        for (int k = 0; k < array.GetLength(0); ++k)
+                        for (var k = 0; k < array.GetLength(0); k++)
                         {
                             Swap(ref array[k, i], ref array[k, j]);
                         }
