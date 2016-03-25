@@ -1,8 +1,21 @@
 ﻿using System;
 
-namespace list
+namespace ListRealisation
 {
-    class ListRealisation
+
+    class List
     {
+        private class Element
+        {
+            private int number;
+            private Element next;
+
+            public Element(int value)
+            {
+                this.number = value;
+            }
+
+
+        }
     }
 }
