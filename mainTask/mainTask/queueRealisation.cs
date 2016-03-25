@@ -1,7 +1,8 @@
-﻿using System;
-
+﻿
 namespace QueueRealisation
 {
+    using System;
+
     /// <summary>
     /// interface for queue class
     /// </summary>

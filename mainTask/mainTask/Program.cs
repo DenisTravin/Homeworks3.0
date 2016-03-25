@@ -1,8 +1,9 @@
-﻿using System;
-using QueueRealisation;
-
-namespace StackProgram
+﻿
+namespace QueueProgram
 {
+    using System;
+    using QueueRealisation;
+
     /// <summary>
     /// main program class(to show stack work)
     /// </summary>
