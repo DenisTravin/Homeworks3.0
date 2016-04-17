@@ -12,9 +12,10 @@ namespace ListProgram
             {
                 list.AddElement(i * i);
             }
-            list.AddElement(25);
+            //list.AddElement(25);
             list.ListOutput();
             Console.WriteLine("{0} {0} ", list.GetElement(3), list.GetElementIndex(9));
+            list.DeleteElement(26);
             for (var i = 5; i >= 0; i--)
             {
                 Console.WriteLine("{0}", list.DeleteElement(i * i));
