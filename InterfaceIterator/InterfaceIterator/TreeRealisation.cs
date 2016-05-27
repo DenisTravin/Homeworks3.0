@@ -3,29 +3,30 @@ using System.Collections.Generic;
 
 namespace InterfaceIterator
 {
-    /// <summary>
-    /// tree element class
-    /// </summary>
-    public class TreeElement
-    {
-        public int value;
-        public TreeElement parent;
-        public TreeElement leftElement;
-        public TreeElement rightElement;
-
-        public TreeElement(int inputValue)
-        {
-            value = inputValue;
-        }
-
-
-    }
 
     /// <summary>
     /// tree realisation class
     /// </summary>
     public class BinaryTree : IEnumerable<int>
     {
+        /// <summary>
+        /// tree element class
+        /// </summary>
+        public class TreeElement
+        {
+            public int value;
+            public TreeElement parent;
+            public TreeElement leftElement;
+            public TreeElement rightElement;
+
+            public TreeElement(int inputValue)
+            {
+                value = inputValue;
+            }
+
+
+        }
+
         /// <summary>
         /// tree root
         /// </summary>

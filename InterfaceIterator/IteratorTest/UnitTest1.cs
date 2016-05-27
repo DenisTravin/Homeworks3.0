@@ -39,7 +39,10 @@ namespace IteratorTest
             checkList.Add(15);
             checkList.Add(14);
             checkList.Add(17);
-            Assert.AreEqual(checkList, elementList);
+            for (var i = 0; i < 7; i++)
+            {
+                Assert.AreEqual(checkList[i], elementList[i]);
+            }
         }
     }
 }
