@@ -12,16 +12,32 @@ namespace CalculatorNamespace
     /// </summary>
     public class Calculator
     {
+        /// <summary>
+        /// check does char is number
+        /// </summary>
+        /// <param name="inputChar">input char</param>
+        /// <returns>does number</returns>
         private static bool IsNumber(char inputChar)
         {
             return inputChar >= '0' && inputChar <= '9';
         }
 
+        /// <summary>
+        /// check does char is operation
+        /// </summary>
+        /// <param name="inputChar">input char</param>
+        /// <returns>does operation</returns>
         private static bool IsOperation(char inputChar)
         {
             return inputChar == '+' || inputChar == '-' || inputChar == '*' || inputChar == '/';
         }
 
+        /// <summary>
+        /// main calculator method
+        /// </summary>
+        /// <param name="inputStack">input stack</param>
+        /// <param name="inputString">input string</param>
+        /// <returns>calculated number</returns>
         public static int CalculatorMethod(StackInterface inputStack, string inputString)
         {
             for (var i = 0; i < inputString.Length; i++)
