@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LackElementException.cs" />
     <Compile Include="ListInterface.cs" />
-    <Compile Include="ListRealisation.cs" />
+    <Compile Include="List.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandingElementException.cs" />
     <Compile Include="UniqueList.cs" />
   </ItemGroup>
   <ItemGroup>

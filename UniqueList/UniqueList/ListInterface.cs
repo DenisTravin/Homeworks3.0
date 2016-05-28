@@ -2,6 +2,9 @@
 
 namespace ListInterfaceClass
 {
+    /// <summary>
+    /// list interface class
+    /// </summary>
     interface ListInterface
     {
         /// <summary>
@@ -21,7 +24,7 @@ namespace ListInterfaceClass
         /// return list lenght
         /// </summary>
         /// <returns>lenght of list</returns>
-        int GetListLenght();
+        int GetListLength();
 
         /// <summary>
         /// return element by index

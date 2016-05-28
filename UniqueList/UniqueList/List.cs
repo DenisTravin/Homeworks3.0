@@ -3,7 +3,9 @@ using ListInterfaceClass;
 
 namespace ListRealisation
 {
-
+    /// <summary>
+    /// list realisation class
+    /// </summary>
     public class List : ListInterface
     {
         /// <summary>
@@ -85,7 +87,7 @@ namespace ListRealisation
             return false;
         }
 
-        public int GetListLenght()
+        public int GetListLength()
         {
             return listSize;
         }

@@ -1,8 +1,12 @@
 ﻿using System;
 using ListRealisation;
+using Exceptions;
 
 namespace UniqueListRealisation
 {
+    /// <summary>
+    /// unique list realisation class
+    /// </summary>
     public class UniqueList : List
     {
         /// <summary>
@@ -36,36 +40,6 @@ namespace UniqueListRealisation
             {
                 throw new LackElementException();
             }
-        }
-
-        /// <summary>
-        /// Exeption call's if element have already standing in list
-        /// </summary>
-        [Serializable]
-        public class StandingElementException : ApplicationException
-        {
-            public StandingElementException() { }
-            public StandingElementException(string message) : base(message) { }
-            public StandingElementException(string message, Exception inner) : base(message, inner) { }
-            protected StandingElementException(
-              System.Runtime.Serialization.SerializationInfo info,
-              System.Runtime.Serialization.StreamingContext context) : base(info, context)
-            { }
-        }
-
-        /// <summary>
-        /// Exeption call's if element don't standing in list
-        /// </summary>
-        [Serializable]
-        public class LackElementException : ApplicationException
-        {
-            public LackElementException() { }
-            public LackElementException(string message) : base(message) { }
-            public LackElementException(string message, Exception inner) : base(message, inner) { }
-            protected LackElementException(
-              System.Runtime.Serialization.SerializationInfo info,
-              System.Runtime.Serialization.StreamingContext context) : base(info, context)
-            { }
         }
     }
 }
