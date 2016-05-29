@@ -11,9 +11,27 @@ namespace GenericStackNList
         /// </summary>
         private class Element
         {
-            public T value;
+            private T valueField;
 
-            public Element next;
+            /// <summary>
+            /// property for valueField
+            /// </summary>
+            public T value
+            {
+                get { return valueField; }
+                set { valueField = value; }
+            }
+
+            private Element nextElementField;
+
+            /// <summary>
+            /// property for nextElementField
+            /// </summary>
+            public Element next
+            {
+                get { return nextElementField; }
+                set { nextElementField = value; }
+            }
 
             public Element(T newValue)
             {

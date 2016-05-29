@@ -19,6 +19,7 @@ namespace GenericStackNList
                 Console.Write("{0} ", stack.Pop());
             }
             Console.WriteLine("\nStack is empty? - {0}", stack.IsEmpty());
+
             //Generic list check
             var list = new GenericList<string>();
             for (var i = 1; i <= numberStackElements; i++)
@@ -30,7 +31,7 @@ namespace GenericStackNList
             list.ListOutput();
             Console.WriteLine("{0}", list.GetElementIndex("4"));
 
-            ///ListEnumerator check
+            //ListEnumerator check
             var listEnum = new GenericList<int>();
             for (var i = 0; i < 5; i++)
             {
