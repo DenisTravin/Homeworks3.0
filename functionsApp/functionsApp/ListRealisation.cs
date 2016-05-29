@@ -1,9 +1,10 @@
 ﻿using System;
-using ListInterfaceClass;
 
-namespace ListRealisation
+namespace ListNamespace
 {
-
+    /// <summary>
+    /// list realisation class
+    /// </summary>
     public class List : ListInterface
     {
         /// <summary>

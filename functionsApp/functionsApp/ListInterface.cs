@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace ListInterfaceClass
+namespace ListNamespace
 {
+    /// <summary>
+    /// list interface realisation class
+    /// </summary>
     interface ListInterface
     {
         /// <summary>

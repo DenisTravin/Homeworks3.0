@@ -1,9 +1,12 @@
 ﻿using System;
-using ListRealisation;
+using ListNamespace;
 
 namespace Functions
 {
-    public class FunctionsClass
+    /// <summary>
+    /// functions class
+    /// </summary>
+    public static class FunctionsClass
     {
         /// <summary>
         /// map function realization
