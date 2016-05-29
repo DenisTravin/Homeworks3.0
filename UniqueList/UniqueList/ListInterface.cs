@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ListInterfaceClass
+namespace ListNamespace
 {
     /// <summary>
     /// list interface class

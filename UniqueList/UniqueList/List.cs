@@ -1,7 +1,6 @@
 ﻿using System;
-using ListInterfaceClass;
 
-namespace ListRealisation
+namespace ListNamespace
 {
     /// <summary>
     /// list realisation class

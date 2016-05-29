@@ -1,8 +1,7 @@
 ﻿using System;
-using ListRealisation;
 using Exceptions;
 
-namespace UniqueListRealisation
+namespace ListNamespace
 {
     /// <summary>
     /// unique list realisation class
