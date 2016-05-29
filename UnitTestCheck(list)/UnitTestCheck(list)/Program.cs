@@ -1,5 +1,8 @@
 ﻿using System;
+<<<<<<< HEAD:UnitTestCheck(list)/UnitTestCheck(list)/Program.cs
 using ListRealisation;
+=======
+>>>>>>> 4(2s)_04.03.2016:UniqueList/UniqueList/Program.cs
 
 namespace ListProgram
 {
@@ -7,6 +10,7 @@ namespace ListProgram
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD:UnitTestCheck(list)/UnitTestCheck(list)/Program.cs
             var list = new List();
             for (var i = 0; i < 6; i++)
             {
@@ -20,6 +24,8 @@ namespace ListProgram
                 list.ListOutput();
             }
             Console.ReadLine();
+=======
+>>>>>>> 4(2s)_04.03.2016:UniqueList/UniqueList/Program.cs
         }
     }
 }   
