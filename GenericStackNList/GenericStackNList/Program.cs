@@ -6,20 +6,7 @@ namespace GenericStackNList
     {
         static void Main(string[] args)
         {
-            //Stack check
-            const int numberStackElements = 5;
-            var stack = new GenericStack<string>();
-            Console.WriteLine("Stack is empty? - {0}", stack.IsEmpty());
-            for (var i = 1; i <= numberStackElements; i++)
-            {
-                stack.Push((i * i).ToString());
-            }
-            for (var i = 1; i <= numberStackElements; i++)
-            {
-                Console.Write("{0} ", stack.Pop());
-            }
-            Console.WriteLine("\nStack is empty? - {0}", stack.IsEmpty());
-
+            int numberStackElements = 5;
             //Generic list check
             var list = new GenericList<string>();
             for (var i = 1; i <= numberStackElements; i++)

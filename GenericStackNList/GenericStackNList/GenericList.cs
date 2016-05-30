@@ -188,12 +188,12 @@ namespace GenericStackNList
         /// Implementation for the GetEnumerator method.
         /// </summary>
         /// <returns></returns>
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            return (IEnumerator<T>)GetEnumeratorReal();
+            return new ListEnumerator(this);
         }
 
-        public ListEnumerator GetEnumeratorReal()
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             return new ListEnumerator(this);
         }
@@ -201,14 +201,14 @@ namespace GenericStackNList
         /// <summary>
         /// Implementation for the ListEnumerator method.
         /// </summary>
-        public class ListEnumerator : IEnumerator<T>
+        private class ListEnumerator : IEnumerator<T>
         {
 
-            int pos = -1;
+            private int pos = -1;
 
-            GenericList<T> list;
+            private GenericList<T> list;
 
-            Element curElement;
+            private Element curElement;
 
             /// <summary>
             /// ListEnumerator constructor
@@ -272,26 +272,6 @@ namespace GenericStackNList
             public void Dispose()
             {
             }
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return new ListEnumerator(this);
-        }
-
-        /// <summary>
-        /// Exeption call's if element don't standing in list
-        /// </summary>
-        [Serializable]
-        public class LackElementException : ApplicationException
-        {
-            public LackElementException() { }
-            public LackElementException(string message) : base(message) { }
-            public LackElementException(string message, Exception inner) : base(message, inner) { }
-            protected LackElementException(
-              System.Runtime.Serialization.SerializationInfo info,
-              System.Runtime.Serialization.StreamingContext context) : base(info, context)
-            { }
         }
     }   
 }

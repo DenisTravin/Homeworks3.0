@@ -1,17 +1,23 @@
 ﻿using System.Collections.Generic;
 
-namespace GenericGroup
+namespace GenericSetNamespace
 {
     /// <summary>
     /// generic group realisation class
     /// </summary>
     /// <typeparam name="T">type of group elements</typeparam>
-    public class GenericGroup<T>
+    public class GenericSet<T>
     {
         /// <summary>
         /// generic group list
         /// </summary>
-        private List<T> group = new List<T>();
+        private List<T> set = new List<T>();
+
+        public List<T> SetProperty
+        {
+            get { return set; }
+        }
+
 
         /// <summary>
         /// add element to group
@@ -19,9 +25,9 @@ namespace GenericGroup
         /// <param name="newElementValue">adding element value</param>
         public void AddElement(T newElementValue)
         {
-            if (!group.Contains(newElementValue))
+            if (!set.Contains(newElementValue))
             {
-                group.Add(newElementValue);
+                set.Add(newElementValue);
             }
         }
 
@@ -32,7 +38,7 @@ namespace GenericGroup
         /// <returns>does element deleted?</returns>
         public bool DeleteElement(T delElementValue)
         {
-            return group.Remove(delElementValue);
+            return set.Remove(delElementValue);
         }
 
         /// <summary>
@@ -42,16 +48,7 @@ namespace GenericGroup
         /// <returns>does element in group?</returns>
         public bool ElementContains(T contElementValue)
         {
-            return group.Contains(contElementValue);
-        }
-
-        /// <summary>
-        /// return group list
-        /// </summary>
-        /// <returns>group list</returns>
-        public List<T> ReturnGroupList()
-        {
-            return group;
+            return set.Contains(contElementValue);
         }
 
         /// <summary>
@@ -59,16 +56,16 @@ namespace GenericGroup
         /// </summary>
         /// <param name="inputGroup">input group</param>
         /// <returns>combined group</returns>
-        public GenericGroup<T> GroupCombo(GenericGroup<T> inputGroup)
+        public GenericSet<T> SetCombo(GenericSet<T> inputGroup)
         {
-            GenericGroup<T> comboGroup = new GenericGroup<T>();
+            GenericSet<T> comboGroup = new GenericSet<T>();
             
-            foreach(T elementValue in group)
+            foreach (T elementValue in set)
             {
                 comboGroup.AddElement(elementValue);
             }
 
-            foreach(T elementValue in inputGroup.ReturnGroupList())
+            foreach (T elementValue in inputGroup.set)
             {
                 comboGroup.AddElement(elementValue);
             }
@@ -81,13 +78,13 @@ namespace GenericGroup
         /// </summary>
         /// <param name="inputGroup">input group</param>
         /// <returns>crossed group</returns>
-        public GenericGroup<T> GroupCross(GenericGroup<T> inputGroup)
+        public GenericSet<T> SetCross(GenericSet<T> inputGroup)
         {
-            GenericGroup<T> crossGroup = new GenericGroup<T>();
+            GenericSet<T> crossGroup = new GenericSet<T>();
 
-            foreach (T elementValue in inputGroup.ReturnGroupList())
+            foreach (T elementValue in inputGroup.set)
             {
-                if (group.Contains(elementValue))
+                if (set.Contains(elementValue))
                 {
                     crossGroup.AddElement(elementValue);
                 }
