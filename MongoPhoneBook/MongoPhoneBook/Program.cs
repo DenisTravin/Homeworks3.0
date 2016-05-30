@@ -6,12 +6,17 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace MongoPhoneBook
 {
-
+    /// <summary>
+    /// phonebook person class
+    /// </summary>
     [BsonIgnoreExtraElements]
     public class Person
     {
         private string number;
 
+        /// <summary>
+        /// number property
+        /// </summary>
         public string Number
         {
             get { return number; }
@@ -20,6 +25,9 @@ namespace MongoPhoneBook
 
         private string name;
 
+        /// <summary>
+        /// name property
+        /// </summary>
         public string Name
         {
             get { return name; }
@@ -29,6 +37,10 @@ namespace MongoPhoneBook
 
     public class Program
     {
+        /// <summary>
+        /// main app class
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var client = new MongoClient("mongodb://localhost");
@@ -73,6 +85,10 @@ namespace MongoPhoneBook
             }
         }
 
+        /// <summary>
+        /// add person to phonebook method
+        /// </summary>
+        /// <param name="collection">input collection</param>
         private static void AddPerson(IMongoCollection<Person> collection)
         {
             var newPerson = new Person();
@@ -83,6 +99,10 @@ namespace MongoPhoneBook
             collection.InsertOne(newPerson);
         }
 
+        /// <summary>
+        /// find by name class
+        /// </summary>
+        /// <param name="collection">input collection</param>
         private static void FindByName(IMongoCollection<Person> collection)
         {
             Console.Write("Input name: ");
@@ -99,6 +119,10 @@ namespace MongoPhoneBook
             Console.WriteLine("Person with this name is absent");
         }
 
+        /// <summary>
+        /// find by number class
+        /// </summary>
+        /// <param name="collection">input collection</param>
         private static void FindByNumber(IMongoCollection<Person> collection)
         {
             Console.Write("Input number: ");
@@ -115,6 +139,10 @@ namespace MongoPhoneBook
             Console.WriteLine("Person with this number is absent");
         }
 
+        /// <summary>
+        /// output all list
+        /// </summary>
+        /// <param name="collection"></param>
         private static void ListOutput(IMongoCollection<Person> collection)
         {
             var list = collection.Find(new BsonDocument()).ToList();
