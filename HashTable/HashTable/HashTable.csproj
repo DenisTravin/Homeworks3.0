@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HashFunctions.cs" />
+    <Compile Include="HashTable.cs" />
+    <Compile Include="HashTableInterface.cs" />
+    <Compile Include="LackOfHashException.cs" />
+    <Compile Include="List.cs" />
+    <Compile Include="ListInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
