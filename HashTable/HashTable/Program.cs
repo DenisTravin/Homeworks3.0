@@ -2,6 +2,9 @@
 
 namespace HashTableNamespace
 {
+    /// <summary>
+    /// main app mathod
+    /// </summary>
     public class Program
     {
         static void Main(string[] args)
