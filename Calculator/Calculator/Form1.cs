@@ -23,6 +23,11 @@ namespace Calculator
         private int calculateResult;
 
         /// <summary>
+        /// previos button number
+        /// </summary>
+        private int previosButton = -1;
+
+        /// <summary>
         /// variable for operation definition
         /// </summary>
         private int operation;
@@ -60,15 +65,17 @@ namespace Calculator
             if (buttonNubmer == 15)
             {
                 textBox1.Text = Convert.ToString(calculateResult);
+                previosButton = buttonNubmer;
                 return;
             }
             if (buttonNubmer >= 11 && buttonNubmer <= 14)
             {
                 textBox1.Text = Convert.ToString(calculateResult);
                 operation = buttonNubmer;
+                previosButton = buttonNubmer;
                 return;
             }
-            if (buttonNubmer >= 0 && buttonNubmer <= 10)
+            if (buttonNubmer >= 0 && buttonNubmer <= 10 && previosButton != 15)
             {
                 if (operation == 0)
                 {
@@ -101,6 +108,11 @@ namespace Calculator
                     operation = 0;
                 }
             }
+            else
+            {
+                calculateResult = buttonNubmer;
+            }
+            previosButton = buttonNubmer;
         }
 
         private void button1_Click(object sender, EventArgs e)
