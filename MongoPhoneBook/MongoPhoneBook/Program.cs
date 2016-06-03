@@ -12,26 +12,20 @@ namespace MongoPhoneBook
     [BsonIgnoreExtraElements]
     public class Person
     {
-        private string number;
-
         /// <summary>
         /// number property
         /// </summary>
         public string Number
         {
-            get { return number; }
-            set { number = value; }
+            get; set;
         }
-
-        private string name;
 
         /// <summary>
         /// name property
         /// </summary>
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get; set;
         }
     }
 
