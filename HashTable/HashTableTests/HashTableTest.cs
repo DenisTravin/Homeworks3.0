@@ -13,9 +13,12 @@ namespace HashTableTests
         [TestInitialize]
         public void Initialize()
         {
-            hashTableByLengthFunc = new HashTable(1);
-            hashTableByLettersFunc = new HashTable(2);
-            hashTableByMultFunc = new HashTable(3);
+            HashByLength hashByLength = new HashByLength();
+            hashTableByLengthFunc = new HashTable(hashByLength.Hash);
+            HashByLetters hashByLetters = new HashByLetters();
+            hashTableByLettersFunc = new HashTable(hashByLetters.Hash);
+            HashByMult hashByNult = new HashByMult();
+            hashTableByMultFunc = new HashTable(hashByNult.Hash);
         }
 
         [TestMethod]

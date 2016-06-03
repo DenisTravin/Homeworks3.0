@@ -9,19 +9,22 @@ namespace HashTableTests
         [TestMethod]
         public void HashByLengthTest()
         {
-            Assert.AreEqual(4, HashFunctionClass.Hash("word", 100, 1));
+            HashByLength hash = new HashByLength();
+            Assert.AreEqual(4, hash.Hash("word", 100));
         }
 
         [TestMethod]
         public void HashByLettersTest()
         {
-            Assert.AreEqual(44, HashFunctionClass.Hash("word", 100, 2));
+            HashByLetters hash = new HashByLetters();
+            Assert.AreEqual(44, hash.Hash("word", 100));
         }
 
         [TestMethod]
         public void HashByMultTest()
         {
-            Assert.AreEqual(12, HashFunctionClass.Hash("word", 100, 3));
+            HashByMult hash = new HashByMult();
+            Assert.AreEqual(12, hash.Hash("word", 100));
         }
     }
 }

@@ -14,7 +14,21 @@ namespace HashTableNamespace
             Console.WriteLine("2 - Hash by letters function");
             Console.WriteLine("3 - Hash by mult function");
             int userChoise = Convert.ToInt32(Console.ReadLine());
-            var hashTable = new HashTable(userChoise);
+            HashTable hashTable = null;
+            HashFuncInterface hash = null;
+            switch (userChoise)
+            {
+                case 1:
+                    hash = new HashByLength();
+                    break;
+                case 2:
+                    hash = new HashByLetters();
+                    break;
+                case 3:
+                    hash = new HashByMult();
+                    break;
+            }
+            hashTable = new HashTable(hash.Hash);
             bool flag = true;
             while (flag)
             {
