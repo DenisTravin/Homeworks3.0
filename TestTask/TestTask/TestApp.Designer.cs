@@ -4,7 +4,7 @@ using System;
 
 namespace TestTask
 {
-    partial class Form1
+    partial class TestApp
     {
         /// <summary>
         /// Обязательная переменная конструктора.

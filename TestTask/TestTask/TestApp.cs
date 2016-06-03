@@ -4,21 +4,24 @@ using System.Windows.Forms;
 
 namespace TestTask
 {
-    public partial class Form1 : Form
+    /// <summary>
+    /// test app main class
+    /// </summary>
+    public partial class TestApp : Form
     {
-        private const int n = 5;
+        private const int n = 1;
         private const int windowHeight = 600;
         private const int windowWidth = 500;
         private const int OKButtonHeight = 100;
-        private Button[,] buts;
+        private Button[,] buttons;
 
-        public Form1()
+        public TestApp()
         {
             //button size parametrs
             int buttonWidth = windowWidth / n;
             int buttonHeight = (windowHeight - OKButtonHeight) / n;
             //button array
-            buts = new Button[n, n];
+            buttons = new Button[n, n];
 
             //button array init
             for (var i = 0; i < n; i++)
@@ -29,18 +32,18 @@ namespace TestTask
                     b.Text = "";
                     b.Location = new System.Drawing.Point(j * buttonWidth, i * buttonHeight);
                     b.Size = new System.Drawing.Size(buttonWidth, buttonHeight);
-                    buts[j, i] = b;
-                    Controls.Add(this.buts[j, i]);
+                    buttons[j, i] = b;
+                    Controls.Add(this.buttons[j, i]);
                 }
             }
 
-            //OKButton init
-            var OKButton = new Button();
-            OKButton.Text = "Go";
-            OKButton.Location = new Point(0, windowHeight - OKButtonHeight);
-            OKButton.Size = new Size(windowWidth, OKButtonHeight);
-            OKButton.Click += new EventHandler(OnGoClick);
-            Controls.Add(OKButton);
+            //OkButton init
+            var OkButton = new Button();
+            OkButton.Text = "Go";
+            OkButton.Location = new Point(0, windowHeight - OKButtonHeight);
+            OkButton.Size = new Size(windowWidth, OKButtonHeight);
+            OkButton.Click += new EventHandler(OnGoClick);
+            Controls.Add(OkButton);
             SuspendLayout();
             InitializeComponent(windowHeight, windowWidth);
         }
@@ -48,7 +51,7 @@ namespace TestTask
         /// <summary>
         /// timer for app
         /// </summary>
-        static Timer myTimer = new Timer();
+        private static Timer myTimer = new Timer();
 
         /// <summary>
         /// Go button click method
@@ -65,9 +68,9 @@ namespace TestTask
         /// <summary>
         /// Timer arguments
         /// </summary>
-        private int ni = 0;
-        private int nj = 0;
-        private int vec = 1;
+        private int timerI = 0;
+        private int timerJ = 0;
+        private int timerVector = 1;
 
         /// <summary>
         /// timer tick method
@@ -76,44 +79,41 @@ namespace TestTask
         /// <param name="e"></param>
         private void MyTimerTick(object Sender, EventArgs e)
         {
-            if (ni < n)
+            if (timerI < n)
             {
-                if (nj >= 0 && nj < n)
+                if (timerJ >= 0 && timerJ < n)
                 {
-                    int addNumber = 0;
-                    if (vec == 1)
+                    if (timerVector == 1)
                     {
-                        addNumber = ni * n + nj * vec + 1 * vec;
+                        buttons[timerJ, timerI].Text = (timerI * n + timerJ * timerVector + 1 * timerVector).ToString();
                     }
                     else
                     {
-                        addNumber = (ni+1) * n + nj * vec;
+                        buttons[timerJ, timerI].Text = ((timerI + 1) * n + timerJ * timerVector).ToString();
                     }
-
-                    buts[nj, ni].Text = (addNumber).ToString();
-                    nj += vec;
+                    timerJ += timerVector;
                     return;
                 }
-                nj -= vec;
-                vec = -vec;
-                ni++;
-                int addNumbers = 0;
-                if (vec == 1)
+                if (timerI != n - 1)
                 {
-                    addNumbers = ni * n + nj * vec + 1 * vec;
+                    timerJ -= timerVector;
+                    timerVector = -timerVector;
+                    timerI++;
+                    if (timerVector == 1)
+                    {
+                        buttons[timerJ, timerI].Text = (timerI * n + timerJ * timerVector + 1 * timerVector).ToString();
+                    }
+                    else
+                    {
+                        buttons[timerJ, timerI].Text = ((timerI + 1) * n + timerJ * timerVector).ToString();
+                    }
+                    timerJ += timerVector;
+                    return;
                 }
-                else
-                {
-                    addNumbers = (ni + 1) * n + nj * vec;
-                }
-
-                buts[nj, ni].Text = (addNumbers).ToString();
-                nj += vec;
-                return;
             }
-            ni = 0;
-            nj = 0;
-            vec = 1;
+            timerI = 0;
+            timerJ = 0;
+            timerVector = 1;
             myTimer.Enabled = false;
         }
     }
