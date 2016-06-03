@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calculator
 {
-    public partial class Form1 : Form
+    public partial class Calculator : Form
     {
         /// <summary>
         /// array of all calculate buttons
@@ -32,7 +25,7 @@ namespace Calculator
         /// </summary>
         private int operation;
 
-        public Form1()
+        public Calculator()
         {
             InitializeComponent();
             buttonArray = new Button[15];
