@@ -13,13 +13,13 @@ namespace HashTableNamespace
 
         private List[] listArray;
 
-        private Func<string, int, int> inputHash;
+        private HashFuncInterface inputHash;
 
         /// <summary>
         /// hash table constructor
         /// </summary>
         /// <param name="userInput">user choice for hash function</param>
-        public HashTable(Func<string, int, int> hash)
+        public HashTable(HashFuncInterface hash)
         {
             listArray = new List[arraySize];
             inputHash = hash;
@@ -31,7 +31,7 @@ namespace HashTableNamespace
 
         private int HashFunction(string value)
         {
-            return inputHash(value, arraySize);
+            return inputHash.Hash(value, arraySize);
         }
 
 

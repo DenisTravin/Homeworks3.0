@@ -28,7 +28,7 @@ namespace HashTableNamespace
                     hash = new HashByMult();
                     break;
             }
-            hashTable = new HashTable(hash.Hash);
+            hashTable = new HashTable(hash);
             bool flag = true;
             while (flag)
             {
