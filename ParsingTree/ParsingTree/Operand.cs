@@ -18,12 +18,12 @@ namespace ParsingTree
             set { element = value; }
         }
 
-        public override int Calculate()
+        public int Calculate()
         {
             return Convert.ToInt32(element);
         }
 
-        public override void Output()
+        public void Output()
         {
             Console.Write("{0} ", element);
         }

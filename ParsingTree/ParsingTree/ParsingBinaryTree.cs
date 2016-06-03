@@ -1,14 +1,5 @@
 ﻿namespace ParsingTree
 {
-    /// <summary>
-    /// interface for tree element
-    /// </summary>
-    public abstract class AbstractTreeElement
-    {
-        public abstract int Calculate();
-
-        public abstract void Output();
-    }
 
     /// <summary>
     /// binary parsing tree class

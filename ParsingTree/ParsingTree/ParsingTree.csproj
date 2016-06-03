@@ -43,12 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DivisionOperator.cs" />
     <Compile Include="LackOfOperationException.cs" />
+    <Compile Include="MinusOperator.cs" />
+    <Compile Include="MultOperator.cs" />
     <Compile Include="Operand.cs" />
-    <Compile Include="Operators.cs" />
+    <Compile Include="Operator.cs" />
     <Compile Include="ParsingBinaryTree.cs" />
+    <Compile Include="PlusOperator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeElementInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

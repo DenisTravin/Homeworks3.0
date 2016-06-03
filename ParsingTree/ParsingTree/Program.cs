@@ -7,9 +7,7 @@ namespace ParsingTree
     {
         static void Main(string[] args)
         {
-            string inputFile = "input.txt";
-            ParsingBinaryTree binaryTree = null;
-            binaryTree = new ParsingBinaryTree(ReadFromFile(inputFile));
+            ParsingBinaryTree binaryTree = new ParsingBinaryTree(ReadFromFile("input.txt"));
             binaryTree.Output();
             Console.WriteLine("\nCalculated expression: {0}", binaryTree.Calculate());
             Console.ReadLine();
