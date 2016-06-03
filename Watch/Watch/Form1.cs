@@ -12,7 +12,14 @@ namespace Watch
 
         private void TickTimer(object sender, EventArgs e)
         {
-            button1.Text = DateTime.Now.Hour.ToString() + " : " + DateTime.Now.Minute.ToString() + " : " + DateTime.Now.Second.ToString();
+            button1.Text = ZeroFunc(DateTime.Now.Hour.ToString()) + " : " + ZeroFunc(DateTime.Now.Minute.ToString()) + " : " + ZeroFunc(DateTime.Now.Second.ToString());
+        }
+
+        private string ZeroFunc(string inputString)
+        {
+            if (inputString.Length == 1)
+                return "0" + inputString;
+            return inputString;
         }
     }
 }
