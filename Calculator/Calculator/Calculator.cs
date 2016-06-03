@@ -18,19 +18,19 @@ namespace Calculator
         /// <summary>
         /// previos button number
         /// </summary>
-        private int previosButton = -1;
+        private Button previosButton = null;
 
         /// <summary>
         /// variable for operation definition
         /// </summary>
-        private int operation;
+        private Button operation;
 
         public Calculator()
         {
             InitializeComponent();
             buttonArray = new Button[15];
             calculateResult = 0;
-            operation = 0;
+            operation = null;
             buttonArray[0] = button14;
             buttonArray[1] = button1;
             buttonArray[2] = button2;
@@ -53,134 +53,71 @@ namespace Calculator
         /// function for calculating 
         /// </summary>
         /// <param name="buttonNubmer">button number</param>
-        private void Calculating(int buttonNubmer)
+        private void Calculating(Button button)
         {
-            if (buttonNubmer == 15)
+            
+            if (Convert.ToInt32(button.Text) >= 0 && Convert.ToInt32(button.Text) <= 10 && (previosButton == null || previosButton.Text != "="))
             {
-                textBox1.Text = Convert.ToString(calculateResult);
-                previosButton = buttonNubmer;
-                return;
-            }
-            if (buttonNubmer >= 11 && buttonNubmer <= 14)
-            {
-                textBox1.Text = Convert.ToString(calculateResult);
-                operation = buttonNubmer;
-                previosButton = buttonNubmer;
-                return;
-            }
-            if (buttonNubmer >= 0 && buttonNubmer <= 10 && previosButton != 15)
-            {
-                if (operation == 0)
+                if (operation == null)
                 {
                     if (calculateResult != 0)
                     {
                         calculateResult *= 10;
                     }
-                    calculateResult += buttonNubmer;
+                    calculateResult += Convert.ToInt32(button.Text);
                     textBox1.Text = Convert.ToString(calculateResult);
                 }
                 else
                 {
-                    textBox1.Text = Convert.ToString(buttonNubmer);
-                    switch (operation)
+                    textBox1.Text = button.Text;
+                    switch (operation.Text)
                     {
-                        case 14:
-                            calculateResult += buttonNubmer;
+                        case "+":
+                            calculateResult += Convert.ToInt32(button.Text);
                             break;
-                        case 11:
-                            calculateResult -= buttonNubmer;
+                        case "-":
+                            calculateResult -= Convert.ToInt32(button.Text);
                             break;
-                        case 12:
-                            calculateResult *= buttonNubmer;
+                        case "*":
+                            calculateResult *= Convert.ToInt32(button.Text);
                             break;
-                        case 13:
-                            calculateResult /= buttonNubmer;
+                        case "/":
+                            calculateResult /= Convert.ToInt32(button.Text);
                             break;
                               
                     }
-                    operation = 0;
+                    operation = null;
                 }
             }
             else
             {
-                calculateResult = buttonNubmer;
+                calculateResult = Convert.ToInt32(button.Text);
             }
-            previosButton = buttonNubmer;
+            previosButton = button;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OnNumberClick(object sender, EventArgs e)
         {
-            Calculating(1);
+            Button thisButton = (Button)sender;
+            Calculating(thisButton);
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        
+        private void OnOperationClick(object sender, EventArgs e)
         {
-            Calculating(2);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Calculating(3);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Calculating(4);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Calculating(5);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Calculating(6);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Calculating(7);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Calculating(8);
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Calculating(9);
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            Calculating(0);
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            Calculating(11);
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            Calculating(12);
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            Calculating(13);
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-            Calculating(14);
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            Calculating(15);
+            Button thisButton = (Button)sender;
+            if (thisButton.Text == "=")
+            {
+                textBox1.Text = Convert.ToString(calculateResult);
+                previosButton = thisButton;
+                return;
+            }
+            if (thisButton.Text == "+" || thisButton.Text == "-" || thisButton.Text == "*" || thisButton.Text == "/")
+            {
+                textBox1.Text = Convert.ToString(calculateResult);
+                operation = thisButton;
+                previosButton = thisButton;
+                return;
+            }
         }
     }
 }
