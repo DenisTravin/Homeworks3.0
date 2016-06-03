@@ -22,7 +22,7 @@ namespace HashTableTests
         public void AddMethodTest()
         {
             hashTableByLengthFunc.AddElement("word");
-            Assert.AreEqual(true, hashTableByLengthFunc.CheckElementStanding("word"));
+            Assert.IsTrue(hashTableByLengthFunc.CheckElementStanding("word"));
             hashTableByLettersFunc.AddElement("word");
             Assert.AreEqual(true, hashTableByLettersFunc.CheckElementStanding("word"));
             hashTableByMultFunc.AddElement("word");

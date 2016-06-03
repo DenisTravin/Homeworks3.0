@@ -1,6 +1,7 @@
 ﻿
 namespace HashTableNamespace
 {
+
     interface HashTableInterface
     {
         /// <summary>
